@@ -12,8 +12,7 @@ def userInput():
     while True:
         EMAIL = input("Enter your Email: ").strip()
         PASSWORD = getpass("Enter your password: ")
-        choice = 'y'
-        while (choice == 'y'):
+        while True:
             choice = input("Do you want to view your password?y/n\n")
             if (choice == 'y'):
                 print(PASSWORD)
