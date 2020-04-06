@@ -4,10 +4,27 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 import time
-from sys import argv
+from getpass import getpass
 
 
-EMAIL, PASSWORD = argv[1].strip(), argv[2].strip()
+#Get user Input
+def userInput():
+    while True:
+        EMAIL = input("Enter your Email: ").strip()
+        PASSWORD = getpass("Enter your password: ")
+        choice = 'y'
+        while (choice == 'y'):
+            choice = input("Do you want to view your password?y/n\n")
+            if (choice == 'y'):
+                print(PASSWORD)
+                choice = input("Do you want to change your password?y/n")
+                if (choice == 'y'):
+                    PASSWORD = getpass("Enter your password")
+            break
+        break
+
+    return EMAIL, PASSWORD
+    
 
 
 driver = webdriver.Chrome('C:/Python38/chromedriver/chromedriver.exe')
@@ -15,7 +32,7 @@ driver = webdriver.Chrome('C:/Python38/chromedriver/chromedriver.exe')
 
 #chrome_options = Options()
 #chrome_options.add_argument("--incognito")
-def login():
+def login(EMAIL, PASSWORD):
     
     driver.get("https://strive-ttu.campus.eab.com/home/staff")
     #driver.set_window_size(1200,1200)
@@ -84,6 +101,7 @@ def checkBox():
     #driver.close()
 
 def main():
+    email, password = userInput()
     login()
     checkBox()
     
