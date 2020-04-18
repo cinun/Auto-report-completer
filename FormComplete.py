@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 import time
+import os 
 from sys import argv
 from getpass import getpass
 
@@ -28,7 +29,8 @@ def userInput():
     
 
 
-driver = webdriver.Chrome('chromedriver.exe')
+path = os.path.join(os.getcwd(), "chromedriver.exe")
+driver = webdriver.Chrome(path)
 
 
 #chrome_options = Options()
